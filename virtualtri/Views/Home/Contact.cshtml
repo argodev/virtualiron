@@ -1,0 +1,16 @@
+﻿@model virtualtri.Models.ContactModel
+@{
+    ViewBag.Title = "Contact Us";
+}
+<h2>@ViewBag.Title.</h2>
+
+
+<address>
+    Sign up to join the effort!<br />
+    <a href="@Model.TeamFundraisingLink">@Model.TeamFundraisingLink</a></address>
+    <strong>Contact Team @Model.TeamName:</strong> <a href="mailto:@Model.TeamContactEmail">@Model.TeamContactEmail</a><br />
+
+<address>
+    <strong>Team Orphans:</strong> <a href="@Model.TeamTeamOrphansLink">@Model.TeamTeamOrphansLink</a><br />
+    <strong>Brittany's Hope:</strong> <a href="http://www.brittanyshope.org">http://www.brittanyshope.org</a>
+</address>

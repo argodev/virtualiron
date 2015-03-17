@@ -1,0 +1,84 @@
+﻿@using Microsoft.AspNet.Identity
+@model virtualtri.Models.HomePageModel
+@{
+    ViewBag.Title = "Home Page";
+}
+@using Microsoft.AspNet.Identity
+
+@if (Request.IsAuthenticated)
+{
+    <div class="jumbotron">
+    <h1>Leader Board</h1>
+    <p class="lead">Check below to see how you stack up against the other participants on Team @Model.TeamName</p>
+        <p><a href="~/MyActivities" class="btn btn-primary btn-large">Record Activity &raquo;</a></p></div>
+}
+else
+{
+<div class="jumbotron">
+    <h1>Team Orphans Virtual Triathlon</h1>
+    <p class="lead">Help Team @Model.TeamName raise money to bring orphans home to their families by supporting Team Orphans and participate in the fun by 
+    completing your own "virtual triathlon" by running/biking/swimming/walking/hiking/something 140.6 miles between @Model.StartDate and @Model.EndDate.</p>
+    <p><a href="~/Account/Login" class="btn btn-primary btn-large">Register &raquo;</a></p>
+</div>    
+}
+
+@if (Request.IsAuthenticated)
+{
+<div class="col-lg-12">
+    <h2>Your Progress</h2>
+    <hr />
+    <div class="bs-example">
+        <div class="progress" style="margin-bottom: 9px;">
+            <div class="progress-bar progress-bar-warning" style="width: @Model.PercentComplete%">@Html.DisplayTextFor(modelItem => Model.TotalDistance) miles</div>
+        </div>
+    </div>
+</div>
+}
+
+<div class="col-lg-12" style="padding-top:25px;">
+    <h2>Team @Model.TeamName Progress</h2>
+    <hr />
+    <div class="bs-example">
+        <div class="progress" style="margin-bottom: 9px;">
+            <div class="progress-bar progress-bar-info" style="width: @Model.TeamPercentComplete%">@Html.DisplayTextFor(modelItem => Model.TeamTotalDistance) miles</div>
+        </div>
+    </div>
+</div>
+
+<div class="col-lg-12" style="padding-top:25px;">
+    <h2>Individual Standings</h2>
+    <hr />
+
+    @foreach (var item in Model.SummaryData)
+    {
+        <h4 id="progress-alternatives">@Html.DisplayFor(modelItem => item.DisplayName)</h4>
+        <div class="bs-example">
+            <div class="progress" style="margin-bottom: 9px;">
+                <div class="progress-bar progress-bar-success" style="width: @item.PercentComplete%">@Html.DisplayTextFor(modelItem => item.TotalDistance) miles</div>
+            </div>
+        </div>
+    }
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Team Orphans</h2>
+        <p>Team Orphans is a way for motivated athletes and individuals to compete in honor of 
+        orphaned children.  It can be both a single athlete seeking sponsorship for an event or 
+        a group of determined individuals fundraising and competing together.  Either way, we 
+        are all teaming up to bring children home to their forever families!
+        </p>
+        <p><a class="btn btn-default" href="http://www.teamorphans.com/" target="_blank">Learn more &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Brittany's Hope</h2>
+        <p>At Brittany's Hope, we resolve to aid the adoptions of special needs children and to improve 
+        the quality of life for those who still wait.</p>
+        <p><a class="btn btn-default" href="http://www.brittanyshope.org/" target="_blank">Learn more &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>@Model.TargetEventName</h2>
+        <p>@Model.TargetEventDescription</p>
+        <p><a class="btn btn-default" href="@Model.TargetEventLink" target="_blank">Learn more &raquo;</a></p>
+    </div>
+</div>

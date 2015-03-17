@@ -1,0 +1,45 @@
+﻿@model IEnumerable<virtualtri.Models.ParticpantModel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.UserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmailAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateStarted)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateCompleted)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmailAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateStarted)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateCompleted)
+            </td>
+        </tr>
+    }
+
+</table>
+

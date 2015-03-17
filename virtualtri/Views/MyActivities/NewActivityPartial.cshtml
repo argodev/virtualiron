@@ -1,0 +1,58 @@
+﻿@model virtualtri.Entities.Activity
+
+<div class="row" class="col-lg-12">
+
+    <div class="col-md-10 col-lg-offset-1">
+        <div class="well">
+            <form method="post" action="~/MyActivities/Create" novalidate="novalidate" class="bs-example form-horizontal">
+                @Html.AntiForgeryToken()
+
+                <fieldset>
+                    <h4>Add New Activity</h4>
+
+                    <table class="table">
+                        <tr>
+                            <th style="border-top:none;">
+                                @Html.DisplayNameFor(model => model.ActivityType)
+                            </th>
+                            <th style="border-top:none;">
+                                @Html.DisplayNameFor(model => model.Distance)
+                            </th>
+                            <th style="border-top:none;">
+                                @Html.DisplayNameFor(model => model.ActivityDateTime)
+                            </th>
+                            <th style="border-top:none;"></th>
+                        </tr>
+                        <tr>
+                            <td style="border-top:none;">
+                                <select id="ActivityType" name="ActivityType" class="form-control">
+                                    <option>Running</option>
+                                    <option>Cycling</option>
+                                    <option>Swimming</option>
+                                    <option>Walking</option>
+                                    <option>Elliptical</option>
+                                    <option>Kayaking</option>
+                                    <option>Other</option>
+                                </select>
+                            </td>
+                            <td style="border-top:none;">
+                                @Html.TextBoxFor(model => model.Distance, new { @style = "max-width: 300px;", @class = "form-control input-md" })
+                                @Html.ValidationMessageFor(model => model.Distance)
+                            </td>
+                            <td style="border-top:none;">
+                                @Html.TextBoxFor(model => model.ActivityDateTime, new { @style = "max-width: 300px;", @class = "form-control input-md" })
+                                @Html.ValidationMessageFor(model => model.ActivityDateTime)
+                            </td>
+                            <td style="border-top:none;">
+                                <button class="btn btn-default">Cancel</button>
+                                <button class="btn btn-primary" type="submit">Submit</button>
+                            </td>
+                        </tr>
+
+                    </table>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+
+</div>

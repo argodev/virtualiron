@@ -1,0 +1,33 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="virtualtri.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="team_name" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">!!!Unspecified!!!</Value>
+    </Setting>
+    <Setting Name="start_date" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">now</Value>
+    </Setting>
+    <Setting Name="end_date" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">!!!Unspecified!!!</Value>
+    </Setting>
+    <Setting Name="target_event_name" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Target Event Name</Value>
+    </Setting>
+    <Setting Name="target_event_description" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Really long target event description. This says a few things about the event and makes people want to join.</Value>
+    </Setting>
+    <Setting Name="target_event_link" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://www.google.com</Value>
+    </Setting>
+    <Setting Name="team_contact_email" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">virtualiron@someone.com</Value>
+    </Setting>
+    <Setting Name="team_fundraising_link" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://www.google.com</Value>
+    </Setting>
+    <Setting Name="team_team_orphans_link" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">https://www.teamorphans.com</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
