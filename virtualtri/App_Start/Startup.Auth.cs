@@ -44,25 +44,27 @@ namespace virtualtri
             //   appId: "509610525822782",
             //   appSecret: "80d5a5f46acd068742634207e05039d4");
 
-
-            var googleOption = new GoogleAuthenticationOptions()
+            // 1038743317871-c2om754kk22134eivsd11tkbgjcrhrho.apps.googleusercontent.com
+            // 
+            var googleOptions = new GoogleOAuth2AuthenticationOptions() 
             {
-                Provider = new GoogleAuthenticationProvider()
+                ClientId = Properties.Settings.Default.Google_ClientId,
+                ClientSecret = Properties.Settings.Default.Google_ClientSecret,
+                Provider = new GoogleOAuth2AuthenticationProvider() 
                 {
                     OnAuthenticated = (context) =>
-                    {
-                        var rawUserObjectFromFacebookAsJson = context.Identity;
-                        context.Identity.AddClaim(new Claim("urn:google:name", context.Identity.FindFirstValue(ClaimTypes.Name)));
-                        context.Identity.AddClaim(new Claim("urn:google:email", context.Identity.FindFirstValue(ClaimTypes.Email)));
-                        return Task.FromResult(0);
-                    }
+                        {
+                            context.Identity.AddClaim(new Claim("urn:google:name", context.Identity.FindFirstValue(ClaimTypes.Name)));
+                            context.Identity.AddClaim(new Claim("urn:google:email", context.Identity.FindFirstValue(ClaimTypes.Email)));
+                            // This following line is need to retrieve the profile image
+                            // context.Identity.AddClaim(new System.Security.Claims.Claim("urn:google:accesstoken", context.AccessToken, ClaimValueTypes.String, "Google"));
+
+                            return Task.FromResult(0);
+                        }
                 }
             };
 
-            app.UseGoogleAuthentication(googleOption);
-
-
-            //app.UseGoogleAuthentication();
+            app.UseGoogleAuthentication(googleOptions);
         }
     }
 }
