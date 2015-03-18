@@ -46,10 +46,13 @@ namespace virtualtri
 
             // 1038743317871-c2om754kk22134eivsd11tkbgjcrhrho.apps.googleusercontent.com
             // 
+            var test = System.Web.Configuration.WebConfigurationManager.AppSettings["Google_ClientId"];
+            var test2 = System.Web.Configuration.WebConfigurationManager.AppSettings["Google_ClientSecret"];
+            
             var googleOptions = new GoogleOAuth2AuthenticationOptions() 
             {
-                ClientId = Properties.Settings.Default.Google_ClientId,
-                ClientSecret = Properties.Settings.Default.Google_ClientSecret,
+                ClientId = test,
+                ClientSecret = test2,
                 Provider = new GoogleOAuth2AuthenticationProvider() 
                 {
                     OnAuthenticated = (context) =>

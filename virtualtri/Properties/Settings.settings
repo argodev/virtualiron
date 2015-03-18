@@ -29,11 +29,5 @@
     <Setting Name="team_team_orphans_link" Type="System.String" Scope="Application">
       <Value Profile="(Default)">https://www.teamorphans.com</Value>
     </Setting>
-    <Setting Name="Google_ClientId" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">535723739290-6ai82na64imevolge799b3tcf4veq6lc.apps.googleusercontent.com</Value>
-    </Setting>
-    <Setting Name="Google_ClientSecret" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">cqQVD1uSW7rTZN_2yIr4Q3nX</Value>
-    </Setting>
   </Settings>
 </SettingsFile>

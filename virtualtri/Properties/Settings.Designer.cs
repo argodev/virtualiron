@@ -104,23 +104,5 @@ namespace virtualtri.Properties {
                 return ((string)(this["team_team_orphans_link"]));
             }
         }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("535723739290-6ai82na64imevolge799b3tcf4veq6lc.apps.googleusercontent.com")]
-        public string Google_ClientId {
-            get {
-                return ((string)(this["Google_ClientId"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("cqQVD1uSW7rTZN_2yIr4Q3nX")]
-        public string Google_ClientSecret {
-            get {
-                return ((string)(this["Google_ClientSecret"]));
-            }
-        }
     }
 }
