@@ -24,6 +24,10 @@ namespace virtualtri.Models
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
 
+        // 140.6 miles, double Iron - 282 miles, and mega Iron- 500 miles.
+        [Display(Name = "Target Distance")]
+        public int TargetDistance { get; set; }
+
         public DateTime DateStarted { get; set; }
 
         public DateTime DateCompleted { get; set; }

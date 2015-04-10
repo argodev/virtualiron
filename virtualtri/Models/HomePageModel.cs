@@ -47,5 +47,7 @@ namespace virtualtri.Models
         public float TotalDistance { get; set; }
 
         public double PercentComplete { get; set; }
+
+        public int TargetDistance { get; set; }
     }
 }

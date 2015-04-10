@@ -180,6 +180,7 @@
     <Compile Include="Controllers\ParticipantsController.cs" />
     <Compile Include="Entities\Activity.cs" />
     <Compile Include="Entities\ActivityType.cs" />
+    <Compile Include="Entities\TargetDistance.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -206,6 +207,10 @@
     <Compile Include="Migrations\201503180135346_fixing auth junk.cs" />
     <Compile Include="Migrations\201503180135346_fixing auth junk.Designer.cs">
       <DependentUpon>201503180135346_fixing auth junk.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201504100121564_adddistance.cs" />
+    <Compile Include="Migrations\201504100121564_adddistance.Designer.cs">
+      <DependentUpon>201504100121564_adddistance.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -326,6 +331,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201503180135346_fixing auth junk.resx">
       <DependentUpon>201503180135346_fixing auth junk.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201504100121564_adddistance.resx">
+      <DependentUpon>201504100121564_adddistance.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

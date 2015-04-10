@@ -287,7 +287,8 @@ namespace virtualtri.Controllers
                     FirstName = model.FirstName,
                     LastName = model.LastName,
                     DateStarted = DateTime.Now,
-                    DateCompleted = DateTime.Parse("01/01/1990")
+                    DateCompleted = DateTime.Parse("01/01/1990"),
+                    TargetDistance = 140    // assume all are starting here
                 };
                 var result = await UserManager.CreateAsync(user);
                 if (result.Succeeded)
@@ -331,6 +332,32 @@ namespace virtualtri.Controllers
             var linkedAccounts = UserManager.GetLogins(User.Identity.GetUserId());
             ViewBag.ShowRemoveButton = HasPassword() || linkedAccounts.Count > 1;
             return (ActionResult)PartialView("_RemoveAccountPartial", linkedAccounts);
+        }
+
+        //
+        // POST: /Account/UpdateTargetDistance
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> UpdateTargetDistance(string Participant_Id, int targetDistance)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = await UserManager.FindByIdAsync(Participant_Id);
+                if (user != null)
+                {
+                    user.TargetDistance = targetDistance;
+                    UserManager.Update(user);
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Unable to update distance");
+                }
+            }
+
+            // If we got this far, something failed, redisplay form
+            //RedirectToLocal("/MyActivities/Index");
+            //RedirectToRoute()
+            return RedirectToAction("Index", "MyActivities");
         }
 
         protected override void Dispose(bool disposing)

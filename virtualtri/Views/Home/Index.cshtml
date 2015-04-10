@@ -54,7 +54,18 @@ else
         <h4 id="progress-alternatives">@Html.DisplayFor(modelItem => item.DisplayName)</h4>
         <div class="bs-example">
             <div class="progress" style="margin-bottom: 9px;">
-                <div class="progress-bar progress-bar-success" style="width: @item.PercentComplete%">@Html.DisplayTextFor(modelItem => item.TotalDistance) miles</div>
+                @if (item.TargetDistance == 500)
+                {
+                    <div class="progress-bar progress-bar-primary" style="width: @item.PercentComplete%">@Html.DisplayTextFor(modelItem => item.TotalDistance) miles</div>
+                }
+                else if (item.TargetDistance == 282)
+                {
+                    <div class="progress-bar progress-bar-info" style="width: @item.PercentComplete%">@Html.DisplayTextFor(modelItem => item.TotalDistance) miles</div>
+                }
+                else
+                {
+                    <div class="progress-bar progress-bar-success" style="width: @item.PercentComplete%">@Html.DisplayTextFor(modelItem => item.TotalDistance) miles</div>
+                }
             </div>
         </div>
     }

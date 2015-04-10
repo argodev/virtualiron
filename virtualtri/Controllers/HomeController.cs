@@ -52,8 +52,10 @@ namespace virtualtri.Controllers
                 // now we need to add the username as well as 
                 r.DisplayName = (from x in users where x.Id == r.ApplicationUser_Id select x.UserName).FirstOrDefault();
 
+                r.TargetDistance = db.Users.Where(u => u.Id == r.ApplicationUser_Id).Select(u => u.TargetDistance).FirstOrDefault();
+
                 // calculate the percent complete
-                r.PercentComplete = r.TotalDistance >= 140.6 ? 100 : Math.Floor((r.TotalDistance / 140.6)*100);
+                r.PercentComplete = r.TotalDistance >= r.TargetDistance ? 100 : Math.Floor((r.TotalDistance / r.TargetDistance) * 100);
                 return r;
             }).ToList();
 
@@ -64,8 +66,8 @@ namespace virtualtri.Controllers
             // 1. how many team members are there
             var count = db.Users.Count();
 
-            // 2. total miles
-            var teamTotalGoal = 140.6 * count;
+            // 2. total miles 
+            var teamTotalGoal = db.Users.Select(u => u.TargetDistance).Sum();
 
             // 3. actual total miles
             var teamActualMiles = result.Sum(a => a.TotalDistance);
@@ -75,6 +77,7 @@ namespace virtualtri.Controllers
             if (Request.IsAuthenticated)
             {
                 string id = User.Identity.GetUserId();
+                int targetDistance = db.Users.Where(u => u.Id == id).Select(u => u.TargetDistance).FirstOrDefault();
 
                 // get the user's info
                 var activities = (from a in db.Activities
@@ -85,7 +88,7 @@ namespace virtualtri.Controllers
                 allActivities.Activities = activities == null ? new List<Activity>() : activities.ToList();
 
                 allActivities.TotalDistance = allActivities.Activities.Sum(a => a.Distance);
-                allActivities.PercentComplete = Math.Floor((allActivities.TotalDistance / 140.6) * 100);
+                allActivities.PercentComplete = Math.Floor((allActivities.TotalDistance / targetDistance) * 100);
 
                 if (allActivities.PercentComplete > 100)
                 {

@@ -27,6 +27,14 @@ namespace virtualtri.Controllers
             var userActivities = new MyActivitiesViewModel();
             userActivities.Participant = db.Users.Find(User.Identity.GetUserId());
 
+            // update if appropriate
+            if (userActivities.Participant.TargetDistance < 140)
+            {
+                userActivities.Participant.TargetDistance = 140;
+
+                db.SaveChanges();                
+            }
+
             userActivities.NewActivity = new Activity()
             {
                 ActivityDateTime = DateTime.Now
@@ -43,7 +51,7 @@ namespace virtualtri.Controllers
             userActivities.Activities = activities == null ? new List<Activity>() : activities.ToList();
 
             userActivities.TotalDistance = userActivities.Activities.Sum(a => a.Distance);
-            userActivities.PercentComplete = Math.Floor((userActivities.TotalDistance / 140.6)*100);
+            userActivities.PercentComplete = Math.Floor((userActivities.TotalDistance / userActivities.Participant.TargetDistance )*100);
 
             if (userActivities.PercentComplete > 100)
             {
