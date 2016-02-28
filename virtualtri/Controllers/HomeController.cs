@@ -66,8 +66,16 @@ namespace virtualtri.Controllers
             // 1. how many team members are there
             var count = db.Users.Count();
 
-            // 2. total miles 
-            var teamTotalGoal = db.Users.Select(u => u.TargetDistance).Sum();
+            // 2. total miles
+            int teamTotalGoal = 0;
+            try
+            {
+                db.Users.Select(u => u.TargetDistance).Sum();
+            } catch (System.InvalidOperationException)
+            {
+                // this is likely due to no one being in the db
+                teamTotalGoal = 0;
+            }
 
             // 3. actual total miles
             var teamActualMiles = result.Sum(a => a.TotalDistance);
