@@ -17,7 +17,8 @@ else
 <div class="jumbotron">
     <h1>Team Orphans Virtual Triathlon</h1>
     <p class="lead">Help Team @Model.TeamName raise money to bring orphans home to their families by supporting Team Orphans and participate in the fun by 
-    completing your own "virtual triathlon" by running/biking/swimming/walking/hiking/something 140.6 miles between @Model.StartDate and @Model.EndDate.</p>
+    completing your own "virtual triathlon" by running / biking / swimming / walking / hiking / <i>something</i> at least 140.6 miles between @Model.StartDate and @Model.EndDate.
+    Pick your start date and end date (within the range above), choose your target distance (Regular, Double, or Mega IRON), and get started!</p>
     <p><a href="~/Account/Login" class="btn btn-primary btn-large">Register &raquo;</a></p>
 </div>    
 }
@@ -31,6 +32,7 @@ else
         <div class="progress" style="margin-bottom: 9px;">
             <div class="progress-bar progress-bar-warning" style="width: @Model.PercentComplete%">@Html.DisplayTextFor(modelItem => Model.TotalDistance) miles</div>
         </div>
+        <p>You are signed up for the @Model.SelectedChallenge. Click the "Hello" text in the upper right bar to change the distance goal you are aiming for.</p>
     </div>
 </div>
 }

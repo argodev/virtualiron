@@ -21,7 +21,7 @@ namespace virtualtri.Models
 
         public double PercentComplete { get; set; }
 
-        //public string 
+        public string SelectedChallenge { get; set; }
 
         public string GravatarLink
         { 

@@ -102,6 +102,20 @@ namespace virtualtri.Controllers
                 {
                     allActivities.PercentComplete = 100;
                 }
+
+                // update the text for the current goal/objective
+                switch (targetDistance)
+                {
+                    case 500:
+                        allActivities.SelectedChallenge = "Mega Iron (500 miles)";
+                        break;
+                    case 282:
+                        allActivities.SelectedChallenge = "Double Iron (282 miles)";
+                        break;
+                    default:
+                        allActivities.SelectedChallenge = "Regular Iron (140.6 miles)";
+                        break;
+                }
             }
 
             return View(allActivities);
